@@ -23,12 +23,17 @@
 <?php if ( ! have_posts() ) : ?>
 	<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'twentyten' ); ?></p>
 <?php endif; ?>
+
+	<a href="index.html" data-role="button" data-icon="arrow-l" data-iconpos="left">Newer Posts</a>
+
 	<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
-		<li data-role="list-divider">Letzte Beiträge</li>
+		<li data-role="list-divider">Last Posts</li>
 <?php while ( have_posts() ) : the_post(); ?>
 		<li><a id="post-<?php the_ID(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-				<br /><?php printf( __( '<span class="%1$s">Posted in</span> %2$s', 'twentyten' ), 'entry-utility-prep entry-utility-prep-cat-links', get_the_category_list( ', ' ) ); ?>
-				- <?php printf( __( '<span class="%1$s">Tagged</span> %2$s', 'twentyten' ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?>
+				<br />
+				Posted in: <?php the_category( ', ', 'multiple' , false ); ?> - Tagged: <?php the_tags( '', ', ', '' ); ?>
 		</li>
 <?php endwhile; // End the loop. Whew. ?>
 	</ul>
+	
+	<a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right">Older Posts</a>
