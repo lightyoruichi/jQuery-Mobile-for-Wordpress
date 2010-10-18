@@ -25,8 +25,12 @@
 <?php endif; ?>
 	
 	<?php if ( $wp_query->max_num_pages > 1 ) : ?>
-		<div class="nav-next"><?php previous_posts_link( __( 'Newer Posts &rarr;', 'twentyten' ) ); ?></div>
+		<fieldset class="ui-grid-a">
+			<div class="ui-block-a"><?php next_posts_link( __( '&larr; Older Posts', 'twentyten' ) ); ?>&nbsp;</div>	
+			<div class="ui-block-b" style="text-align: right;"><?php previous_posts_link( __( 'Newer Posts &rarr;', 'twentyten' ) ); ?></div>   
+		</fieldset>
 	<?php endif; ?>
+
 
 	<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
 		<li data-role="list-divider">Last Posts</li>
@@ -48,6 +52,9 @@
 <?php endwhile; // End the loop. Whew. ?>
 	</ul>
 	
-	<?php if (  $wp_query->max_num_pages > 1 ) : ?>
-		<div class="nav-previous"><?php next_posts_link( __( '&larr; Older Posts', 'twentyten' ) ); ?></div>
+	<?php if ( $wp_query->max_num_pages > 1 ) : ?>
+		<fieldset class="ui-grid-a">
+			<div class="ui-block-a"><?php next_posts_link( __( '&larr; Older Posts', 'twentyten' ) ); ?>&nbsp;</div>	
+			<div class="ui-block-b" style="text-align: right;"><?php previous_posts_link( __( 'Newer Posts &rarr;', 'twentyten' ) ); ?></div>   
+		</fieldset>
 	<?php endif; ?>
