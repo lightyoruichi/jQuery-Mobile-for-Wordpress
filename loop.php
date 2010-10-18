@@ -23,22 +23,31 @@
 <?php if ( ! have_posts() ) : ?>
 	<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'twentyten' ); ?></p>
 <?php endif; ?>
-	<?php if ( $wp_query->max_num_pages > 1 ) : ?>
-		<div class="navigation">
-			<?php echo get_previous_posts_link(); ?>
-		</div>
-	<?php endif; ?>
 	
-	<a href="index.html" data-role="button" data-icon="arrow-l" data-iconpos="left">Newer Posts</a>
+	<?php if ( $wp_query->max_num_pages > 1 ) : ?>
+		<div class="nav-next"><?php previous_posts_link( __( 'Newer Posts &rarr;', 'twentyten' ) ); ?></div>
+	<?php endif; ?>
 
 	<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
 		<li data-role="list-divider">Last Posts</li>
 <?php while ( have_posts() ) : the_post(); ?>
-		<li><a id="post-<?php the_ID(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-				<br />
-				Posted in: <?php the_category( ', ', 'multiple' , false ); ?> - Tagged: <?php the_tags( '', ', ', '' ); ?>
+		<li><a id="post-<?php the_ID(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a><br />
+		
+		<?php /* TODO: Fehler beim Ausgeben der Kategorien, es fehlt immer die erste */ ?>
+		
+		<?php if ( count( get_the_category() ) ) : ?>
+			<?php printf( __( '<a href="http://localhost/" rel="category">Programming</a><span class="%1$s">Abgelegt unter:</span> %2$s', 'twentyten' ), 'entry-utility-prep entry-utility-prep-cat-links', get_the_category_list( ', ' ) ); ?>
+		<?php endif; ?>
+		<?php
+			$tags_list = get_the_tag_list( '', ', ' );
+			if ( $tags_list ):
+		?>
+			<?php printf( __( 'Schlagworte: %2$s', 'twentyten' ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?>
+		<?php endif; ?>
 		</li>
 <?php endwhile; // End the loop. Whew. ?>
 	</ul>
 	
-	<a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right">Older Posts</a>
+	<?php if (  $wp_query->max_num_pages > 1 ) : ?>
+		<div class="nav-previous"><?php next_posts_link( __( '&larr; Older Posts', 'twentyten' ) ); ?></div>
+	<?php endif; ?>

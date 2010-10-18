@@ -13,7 +13,9 @@
 	</div><!-- /content -->
 
 	<div data-role="footer">
-		<h4>Page Footer</h4>
+		<h4>
+		<a href="<?php bloginfo('rss2_url'); ?>" rel="external" data-role="button" data-icon="grid" data-iconpos="right">RSS Feed</a> 
+		</h4>
 	</div><!-- /header -->
 </div>
 
