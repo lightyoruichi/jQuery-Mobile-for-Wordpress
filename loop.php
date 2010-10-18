@@ -23,7 +23,12 @@
 <?php if ( ! have_posts() ) : ?>
 	<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'twentyten' ); ?></p>
 <?php endif; ?>
-
+	<?php if ( $wp_query->max_num_pages > 1 ) : ?>
+		<div class="navigation">
+			<?php echo get_previous_posts_link(); ?>
+		</div>
+	<?php endif; ?>
+	
 	<a href="index.html" data-role="button" data-icon="arrow-l" data-iconpos="left">Newer Posts</a>
 
 	<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
