@@ -1,12 +1,12 @@
 <?php
 /**
- * The Header for our theme.
+ * This Theme is for mobile phones and tablets and is built on jQuery Mobile.
  *
- * Displays all of the <head> section and everything up till <div id="main">
+ * This Theme has been developed by David Gebhardt (www.davidgebhardt.de)
  *
  * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.0
+ * @subpackage jQuery Mobile Theme
+ * @since jQM for Wordpress 0.1
  */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -34,7 +34,9 @@
 
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
+<script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php
 	/* We add some JavaScript to pages with the comment form
